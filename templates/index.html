@@ -130,10 +130,13 @@
     </style>
 </head>
 <body>
+    <!-- Video de fundo com Flask -->
     <video autoplay loop muted class="video-bg">
+        <!-- Ajuste para usar o Flask para acessar o arquivo no diretório estático -->
         <source src="{{ url_for('static', filename='videos/anime.mp4') }}" type="video/mp4">
     </video>
     
+    <!-- Barra de navegação -->
     <div class="navbar">
         <h3 class="ms-3"><a href="/">NotMusic</a></h3>
         <div class="me-3">
