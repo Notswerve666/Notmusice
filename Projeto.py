@@ -1,18 +1,39 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return render_template("index.html")
 
-@app.route("/login")
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template("login.html")
+    if request.method == 'POST':
+        
+        username = request.form['username']
+        password = request.form['password']
+        
+        return redirect(url_for('index'))  
+    return render_template('login.html')
 
-@app.route("/register")
+
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template("register.html")
+    if request.method == 'POST':
+        
+        username = request.form['username']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        
+        
+        if password != confirm_password:
+            return "Senhas não coincidem!", 400
+        
+        
+        return redirect(url_for('login'))  
+    return render_template('register.html')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
