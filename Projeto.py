@@ -2,9 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Use a secret key to enable session management
+app.secret_key = 'your_secret_key'  
 
-# Exemplo de banco de dados em memória (você deve usar um banco real)
+
 users_db = {}
 
 @app.route('/')
@@ -17,12 +17,12 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        # Verificar se o usuário existe
+        
         if username in users_db:
-            # Verificar se a senha está correta
+            
             stored_password = users_db[username]['password']
             if check_password_hash(stored_password, password):
-                session['username'] = username  # Iniciar sessão do usuário
+                session['username'] = username  
                 return redirect(url_for('index'))
             else:
                 flash('Senha incorreta!', 'error')
@@ -43,12 +43,12 @@ def register():
             flash('As senhas não coincidem!', 'error')
             return redirect(url_for('register'))
 
-        # Verificar se o usuário já existe
+        
         if username in users_db:
             flash('Usuário já existe!', 'error')
             return redirect(url_for('register'))
 
-        # Salvar o novo usuário (com senha criptografada)
+        
         hashed_password = generate_password_hash(password)
         users_db[username] = {'password': hashed_password, 'email': email}
         flash('Usuário registrado com sucesso!', 'success')
@@ -59,7 +59,7 @@ def register():
 
 @app.route('/logout')
 def logout():
-    session.pop('username', None)  # Remover o usuário da sessão
+    session.pop('username', None)  
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
