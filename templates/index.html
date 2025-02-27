@@ -40,6 +40,15 @@
             font-weight: bold;
         }
 
+        .navbar h3 a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .navbar h3 a:hover {
+            color: #ffcc00;
+        }
+
         .container {
             background: rgba(0, 0, 0, 0.7);
             padding: 40px;
@@ -123,14 +132,13 @@
 <body>
     <video autoplay loop muted class="video-bg">
         <source src="{{ url_for('static', filename='videos/anime.mp4') }}" type="video/mp4">
-        Seu navegador não suporta vídeos em HTML5.
     </video>
     
     <div class="navbar">
-        <h3 class="ms-3">Minha Plataforma de Música</h3>
+        <h3 class="ms-3"><a href="/">NotMusic</a></h3>
         <div class="me-3">
-            <a href="#" class="btn btn-outline-light">Login</a>
-            <a href="#" class="btn btn-warning">Registrar</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-light">Login</a>
+            <a href="{{ url_for('registrar') }}" class="btn btn-warning">Registrar</a>
         </div>
     </div>
 
