@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Plataforma de Música</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar h3 {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            margin-top: 100px;
+        }
+
+        .container h1, .section-title {
+            color: #ffcc00;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container p {
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .btn-custom {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            border-radius: 20px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #ff9900;
+            color: rgb(19, 18, 18);
+            transform: scale(1.1);
+        }
+
+        .content {
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .section-content {
+            color: #fff;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .feature-box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="video-bg">
+        <source src="{{ url_for('static', filename='videos/anime.mp4') }}" type="video/mp4">
+        Seu navegador não suporta vídeos em HTML5.
+    </video>
+    
+    <div class="navbar">
+        <h3 class="ms-3">Minha Plataforma de Música</h3>
+        <div class="me-3">
+            <a href="#" class="btn btn-outline-light">Login</a>
+            <a href="#" class="btn btn-warning">Registrar</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <h1>Bem-vindo(a) ao NotMusic 🎶</h1>
+            <p>Explore uma vasta biblioteca de músicas, crie suas playlists e descubra novos artistas!</p>
+            <a href="#" class="btn btn-custom">Comece Agora</a>
+        </div>
+
+        <div class="container mt-5">
+            <h2 class="section-title">O que dizem os nossos usuários?</h2>
+            <p class="section-content">"NotMusic transformou a forma como ouço música! É incrível poder criar playlists e descobrir novos artistas." - João Silva</p>
+            <p class="section-content">"A plataforma é super fácil de usar e tem tudo o que eu preciso para curtir minha música com qualidade!" - Maria Oliveira</p>
+        </div>
+
+        <div class="container mt-5">
+            <h2 class="section-title">Principais Recursos</h2>
+            <div class="features">
+                <div class="feature-box">
+                    <h3>Playlists Personalizadas</h3>
+                    <p>Crie e compartilhe playlists com seus amigos.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>Recomendações Inteligentes</h3>
+                    <p>Descubra novas músicas com base no seu gosto.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>Modo Offline</h3>
+                    <p>Baixe músicas e ouça sem internet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-white mt-5" style="background-color: rgba(0, 0, 0, 0.7); padding: 20px;">
+        <p>&copy; 2025 NotMusic. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
