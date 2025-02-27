@@ -54,38 +54,19 @@
             font-size: 1.2em;
         }
 
-        input:focus, button:focus {
-            outline: none;
-            border-color: #ffcc00;
-        }
-
-        input {
-            background-color: #fff;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
         button {
             background-color: #ffcc00; 
             color: black;
             font-weight: bold;
             padding: 15px;
             border-radius: 10px;
-            border: none;
             font-size: 1.2em;
-            width: 100%;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         button:hover {
             background-color: #ff9900; 
             transform: scale(1.05); 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
-        }
-
-        button:active {
-            transform: scale(1); 
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); 
         }
 
         p {
@@ -103,24 +84,24 @@
             color: #ff9900;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-                max-width: 100%;
-            }
+        .floating-home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #ffcc00;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
 
-            h2.section-title {
-                font-size: 2em;
-            }
-
-            input, button {
-                padding: 12px;
-                font-size: 1em;
-            }
+        .floating-home-button:hover {
+            background-color: #ff9900;
         }
     </style>
     <script>
-        
         function validateForm() {
             var password = document.getElementById("password").value;
             var confirmPassword = document.getElementById("confirm_password").value;
@@ -133,7 +114,8 @@
     </script>
 </head>
 <body>
-    
+    <a href="{{ url_for('index') }}" class="floating-home-button">Início</a>
+
     <video autoplay loop muted class="video-bg">
         <source src="{{ url_for('static', filename='videos/anime.mp4') }}" type="video/mp4">
     </video>
